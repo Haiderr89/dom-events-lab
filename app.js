@@ -2,9 +2,9 @@
 
 
 /*-------------------------------- Variables --------------------------------*/
-let currentNumber = ""; // Stores the current number being input
-let previousNumber = ""; // Stores the previous number for operations
-let operator = ""; // Stores the selected operator 
+let currentNumber = ""; // we use to store the current number being input
+let previousNumber = ""; // we use also to store as we take it from the current and add it in the previous number for operations
+let operator = ""; // Stores the selected operator like + or -
 
 /*------------------------ Cached Element References ------------------------*/
 const buttonNumbers = document.querySelectorAll(".button.number");
@@ -12,7 +12,7 @@ const buttonOperators = document.querySelectorAll(".button.operator");
 const buttonEquals = document.querySelector(".button.equals");
 const displayResult = document.querySelector(".display");
 
-// Initialize the display with 0
+// to show at the start of calc the number 0
 displayResult.textContent = "0";
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -56,7 +56,7 @@ function handleOperatorClick(event) {
 
 
 
-  // Save the operator and current number, then prepare for the next input
+  // save the operator and put the current number in the previous number, then make the current empty for the second number
   if (currentNumber !== "") {
     previousNumber = currentNumber;
     currentNumber = "";
@@ -73,7 +73,7 @@ function handleOperatorClick(event) {
 // Handle the "=" button click
 function calculateResult() {
   if (previousNumber !== "" && currentNumber !== "" && operator !== "") {
-    // Convert strings to numbers
+    // it is a way to convert strings to numbers I searched for it outsource
     const num1 = Number(previousNumber);
     const num2 = Number(currentNumber);
 
@@ -95,10 +95,10 @@ function calculateResult() {
     }
 
 
-    
+
     // Display and reset variables
     displayResult.textContent = result;
-    currentNumber = result.toString(); // Allow chaining calculations
+    currentNumber = result.toString(); // make the result as the current to allow if we want to continue making calculations 
     previousNumber = "";
     operator = "";
   }
